@@ -77,7 +77,10 @@
     group: root
     mode: 0755
   when: >
-    (ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04') or
-    (ansible_distribution == 'Debian' and ansible_distribution_version|int >= 8) or
-    (ansible_distribution == 'CentOS' and ansible_distribution_major_version >= 7) or
-    (ansible_distribution == 'Fedora')
+    (solr_version.split('.')[0] | int >= 5) and
+    (
+        (ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04') or
+        (ansible_distribution == 'Debian' and ansible_distribution_version|int >= 8) or
+        (ansible_distribution == 'CentOS' and ansible_distribution_major_version >= 7) or
+        (ansible_distribution == 'Fedora')
+    )
